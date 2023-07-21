@@ -1,8 +1,10 @@
-import {Nunito} from 'next/font/google'
+import { Nunito } from 'next/font/google'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Navbar from './components/Navbar'
+import RegisterModal from './components/Modals/RegisterModal'
+import ToasterProvider from './providers/ToasterProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,7 +13,7 @@ export const metadata: Metadata = {
   description: 'BookPlaces Website',
 }
 
-const font = Nunito ({
+const font = Nunito({
   subsets: ["latin"],
 })
 
@@ -23,7 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <Navbar />  
+        <ToasterProvider />
+        <RegisterModal />
+        <Navbar />
         {children}
       </body>
     </html>
