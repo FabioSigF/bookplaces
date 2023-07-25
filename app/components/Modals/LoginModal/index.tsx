@@ -62,6 +62,11 @@ const LoginModal = (props: Props) => {
     })
   }
 
+  const toggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
+
   const bodyContent = (
     <div className='flex flex-col gap-4'>
       <Heading
@@ -106,13 +111,13 @@ const LoginModal = (props: Props) => {
       <div className='text-neutral-500 text-center mt-4 font-light'>
         <div className='flex flex-col items-center justify-center gap-2'>
           <div>
-            Already have an account?
+            First time using BookPlaces?
           </div>
           <div
             className='text-neutral-800 cursor-pointer hover:underline'
-            onClick={registerModal.onClose}
+            onClick={toggle}
           >
-            Log in
+            Create an account
           </div>
         </div>
       </div>
